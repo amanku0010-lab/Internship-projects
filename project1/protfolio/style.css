@@ -1,0 +1,262 @@
+/* =========================================
+   Modern CSS: Glassmorphism & Animations
+   ========================================= */
+
+:root {
+    /* Color Palette */
+    --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-main: #f8f9fa;
+    --text-muted: #b0bec5;
+    --accent: #00d2ff;
+    --accent-hover: #3a7bd5;
+    --focus-ring: 0 0 0 3px rgba(0, 210, 255, 0.5);
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* Focus States for Accessibility (100 Lighthouse Score) */
+a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 4px;
+}
+
+/* Skip Link */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 1em;
+    background-color: var(--accent);
+    color: #000;
+    font-weight: bold;
+}
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+}
+
+/* =========================================
+   Glassmorphism Utilities
+   ========================================= */
+.glass-panel, .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+   Flexbox Layouts
+   ========================================= */
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: var(--accent);
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+header nav ul, footer nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav-link {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+}
+
+/* Main Content */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 4rem;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* Portfolio Grid */
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.glass-card {
+    flex: 1 1 calc(50% - 2rem); /* Flexbox magic for responsive cards */
+    min-width: 300px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.glass-card p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+/* Buttons */
+.action-links {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin-top: auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: var(--accent);
+    color: #111;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--text-main);
+    color: #000;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+
+.btn-outline:hover {
+    background: var(--accent);
+    color: #111;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* =========================================
+   Modern Animations
+   ========================================= */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.slide-up {
+    opacity: 0;
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+/* =========================================
+   Media Queries for Responsiveness
+   ========================================= */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .glass-card {
+        flex: 1 1 100%;
+    }
+    
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
