@@ -1,0 +1,183 @@
+/* =========================================
+   1. Custom CSS Variables (Light/Dark Mode)
+   ========================================= */
+:root {
+  /* Default Light Theme */
+  --bg-gradient: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  --text-primary: #2d3436;
+  --text-secondary: #636e72;
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: rgba(31, 38, 135, 0.15);
+  --accent: #6c5ce7;
+  --transition-speed: 0.4s;
+}
+
+[data-theme="dark"] {
+  /* Dynamic Dark Theme */
+  --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --glass-bg: rgba(16, 25, 40, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: rgba(0, 0, 0, 0.5);
+  --accent: #a29bfe;
+}
+
+/* =========================================
+   2. Reset & Base Architecture
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: color var(--transition-speed) ease;
+}
+
+/* Glassmorphism Visual Design */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
+              background var(--transition-speed) ease;
+}
+
+.glass-panel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 var(--glass-shadow);
+}
+
+/* =========================================
+   3. Flexbox for Localized Alignment
+   ========================================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1.25rem 2rem;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: filter var(--transition-speed);
+}
+
+.theme-btn:hover {
+  filter: brightness(1.2);
+}
+
+.footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+  margin-top: auto;
+}
+
+/* =========================================
+   4. CSS Grid & Mobile-First Media Queries
+   ========================================= */
+
+/* Base (Mobile-First Layout) */
+.portfolio-grid {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  grid-template-columns: 1fr; /* Single column flow for mobile */
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.projects {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr; /* Single column for project cards */
+}
+
+/* Tablet Layout (≥ 768px) */
+@media screen and (min-width: 768px) {
+  .portfolio-grid {
+    padding: 3rem 2rem;
+  }
+  
+  .projects {
+    grid-template-columns: repeat(2, 1fr); /* 2D Grid localized to project cards */
+  }
+}
+
+/* Desktop Layout (≥ 1024px) */
+@media screen and (min-width: 1024px) {
+  .portfolio-grid {
+    /* Complex Two-Dimensional Layout */
+    grid-template-columns: 350px 1fr; 
+    align-items: start;
+    gap: 3rem;
+  }
+
+  .hero {
+    position: sticky;
+    top: 6rem; /* Keeps the hero profile pinned while projects scroll */
+    text-align: left;
+    height: calc(100vh - 12rem);
+  }
+
+  .projects {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+/* Large Desktop Layout (≥ 1440px) */
+@media screen and (min-width: 1440px) {
+  .projects {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
