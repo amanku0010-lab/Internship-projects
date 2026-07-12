@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization -->
+    <title>Aman kumar Akhil | Front-End Developer & UI/UX Designer</title>
+    <meta name="description" content="Portfolio of Aman kumar Akhil, a Front-End Web Developer specializing in accessible, semantic HTML5, CSS3, and modern web applications.">
+    <meta name="keywords" content="Front-End Developer, Web Accessibility, HTML5, Portfolio, Web Design">
+    <meta name="author" content="Aman kumar Akhil">
+    <link rel="canonical" href="https://www.amankumarakhil.example.com/">
+    
+    <!-- Open Graph for Social Sharing (SEO) -->
+    <meta property="og:title" content="Aman kumar Akhil | Front-End Developer">
+    <meta property="og:description" content="View the portfolio and projects of Aman kumar Akhil, accessible web developer.">
+    <meta property="og:url" content="https://www.amankumarakhil.example.com/">
+    <meta property="og:type" content="website">
+
+    <!-- Modern CSS Link -->
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <!-- Accessibility: Skip to main content link for keyboard/screen reader users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Semantic Header with Glassmorphism -->
+    <header role="banner" class="glass-panel">
+        <div class="logo-area">
+            <h1>Aman kumar Akhil</h1>
+            <p>Inclusive Web Developer</p>
+        </div>
+        
+        <!-- Semantic Navigation -->
+        <nav aria-label="Primary Navigation" role="navigation">
+            <ul>
+                <li><a href="index.html" aria-current="page" class="nav-link active">Home / Portfolio</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Semantic Main Content Area -->
+    <main id="main-content" role="main">
+        
+        <!-- About Section -->
+        <section aria-labelledby="about-heading" class="fade-in">
+            <h2 id="about-heading">About Me</h2>
+            <p>I am a developer who believes the web is for everyone. I build fast, responsive, and highly accessible websites.</p>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section aria-labelledby="portfolio-heading">
+            <h2 id="portfolio-heading" class="fade-in">My Recent Projects</h2>
+            
+            <div class="project-grid">
+                <!-- Semantic Article (Glass Card) -->
+                <article aria-labelledby="project-1-title" class="glass-card slide-up">
+                    <h3 id="project-1-title">E-Commerce Accessibility Audit</h3>
+                    <p>A comprehensive refactor of a legacy e-commerce platform to meet WCAG 2.1 AA standards.</p>
+                    <img src="https://via.placeholder.com/600x400/1a1a2e/00d2ff?text=Project+1" alt="Screenshot of the re-designed accessible checkout flow" loading="lazy">
+                    
+                    <nav aria-label="Links for E-Commerce Audit project">
+                        <ul class="action-links">
+                            <li><a href="" class="btn" target="_blank" rel="noopener noreferrer" aria-label="View Source Code">Source Code</a></li>
+                            <li><a href="http://127.0.0.1:5501/index.html" class="btn btn-outline" target="_blank" rel="noopener noreferrer" aria-label="View Live Demo">Live Demo</a></li>
+                        </ul>
+                    </nav>
+                </article>
+
+                <article aria-labelledby="project-2-title" class="glass-card slide-up" style="animation-delay: 0.2s;">
+                    <h3 id="project-2-title">Accessible Weather App</h3>
+                    <p>A fully voice-navigable weather application built with standard HTML5 and modern JS.</p>
+                    <img src="https://via.placeholder.com/600x400/1a1a2e/00d2ff?text=Project+2" alt="Weather application showing a 7-day forecast" loading="lazy">
+                    
+                    <nav aria-label="Links for Weather App project">
+                         <ul class="action-links">
+                            <li><a href="#" class="btn" target="_blank" rel="noopener noreferrer" aria-label="View Source Code">Source Code</a></li>
+                        </ul>
+                    </nav>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Semantic Footer -->
+    <footer role="contentinfo" class="glass-panel">
+        <p>&copy; <time datetime="2026">2026</time> Aman kumar Akhil. All rights reserved.</p>
+        <nav aria-label="Social Media Links">
+            <ul class="social-links">
+                <li><a href="#" aria-label="Aman kumar Akhil on LinkedIn">LinkedIn</a></li>
+                <li><a href="#" aria-label="Aman kumar Akhil on GitHub">GitHub</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+</html>
