@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Aman kumar Akhil | Web Developer</title>
+    <meta name="description" content="Get in touch with Aman kumar Akhil for web development, accessibility audits, or collaboration.">
+    <link rel="canonical" href="https://www.amankumarakhil.example.com/contact.html">
+    
+    <!-- Link to your modern style.css -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Specific styles for the form to match the Glassmorphism dark theme -->
+    <style>
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        label {
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.05); /* Glass effect for inputs */
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        /* Custom dropdown options background so they are readable */
+        option {
+            background-color: #203a43; 
+            color: #fff;
+        }
+        fieldset {
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        legend {
+            padding: 0 0.8rem;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner" class="glass-panel">
+        <div class="logo-area">
+            <h1>Aman kumar Akhil</h1>
+        </div>
+        <nav aria-label="Primary Navigation" role="navigation">
+            <ul>
+                <li><a href="index.html" class="nav-link">Home / Portfolio</a></li>
+                <li><a href="contact.html" aria-current="page" class="nav-link active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main" style="max-width: 800px; margin: 0 auto; text-align: center;">
+        
+        <section aria-labelledby="contact-heading" class="glass-card fade-in">
+            <h2 id="contact-heading" style="color: var(--accent); border: none; margin-bottom: 0.5rem;">Get in Touch</h2>
+            <p style="margin-bottom: 2rem;">Please fill out the form below. Required fields are marked with an asterisk (*).</p>
+            
+            <!-- Accessible Contact Form -->
+            <form action="/submit-endpoint" method="POST" aria-labelledby="contact-heading">
+                
+                <!-- Fieldset and Legend group related form controls -->
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    
+                    <div class="form-group">
+                        <!-- 'for' attribute strictly binds to the 'id' of the input -->
+                        <label for="full-name">Full Name *</label>
+                        <input 
+                            type="text" 
+                            id="full-name" 
+                            name="full_name" 
+                            required 
+                            aria-required="true"
+                            autocomplete="name" 
+                            aria-describedby="name-hint"
+                        >
+                        <!-- Screen readers will read this hint when the input is focused -->
+                        <span id="name-hint" class="sr-only" style="display: none;">Please enter your first and last name.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-address">Email Address *</label>
+                        <input 
+                            type="email" 
+                            id="email-address" 
+                            name="email" 
+                            required 
+                            aria-required="true"
+                            autocomplete="email"
+                        >
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Message Details</legend>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <!-- Native select elements are naturally tab-navigable -->
+                        <select id="subject" name="subject">
+                            <option value="freelance">Freelance Inquiry</option>
+                            <option value="audit">Accessibility Audit</option>
+                            <option value="general">General Question</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            rows="5" 
+                            required 
+                            aria-required="true"
+                        ></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- Native button type="submit" ensures proper enter/spacebar keyboard behavior. Styled with .btn class -->
+                <button type="submit" class="btn" style="width: 100%; font-size: 1.2rem;">Send Message</button>
+
+            </form>
+        </section>
+    </main>
+
+    <footer role="contentinfo" class="glass-panel" style="margin-top: 3rem;">
+        <p>&copy; <time datetime="2026">2026</time> Aman kumar Akhil. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
