@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Responsive Portfolio</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <div class="logo">Creative.Dev</div>
+      <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
+        <span class="icon">🌓</span> Theme
+      </button>
+    </nav>
+  </header>
+
+  <main class="portfolio-grid">
+    <!-- Hero / Profile Section -->
+    <section class="hero glass-panel">
+      <h1>Hello, I'm a Developer</h1>
+      <p>Building visually stunning, fully responsive web experiences with modern layout architectures.</p>
+    </section>
+
+    <!-- Projects Portfolio -->
+    <section class="projects">
+      <article class="project-card glass-panel">
+        <h3>Project Alpha</h3>
+        <p>A decentralized finance landing page featuring scalable Flexbox components.</p>
+      </article>
+      <article class="project-card glass-panel">
+        <h3>Project Beta</h3>
+        <p>An interactive local service platform application utilizing Grid layouts.</p>
+      </article>
+      <article class="project-card glass-panel">
+        <h3>Project Gamma</h3>
+        <p>Advanced cloud architecture presentations optimized for all viewports.</p>
+      </article>
+      <article class="project-card glass-panel">
+        <h3>Project Delta</h3>
+        <p>A comprehensive natural language processing dashboard built mobile-first.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Creative.Dev. All rights reserved.</p>
+  </footer>
+
+  <!-- Simple Theme Toggle Script -->
+  <script>
+    const themeBtn = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    themeBtn.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+    });
+  </script>
+</body>
+</html>
