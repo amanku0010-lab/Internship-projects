@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="google-site-verification" content="QCeZ-egdmX1eJER1oF_QrWd8EJ_WEDtWCUkUZEz4rD8" />
+    <title>Weather App</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <header>
+        <h1>🌤️ Weather App</h1>
+        <p class="subtitle">Real-time weather information</p>
+      </header>
+
+      <!-- Search Section -->
+      <section class="search-section">
+        <div class="search-box">
+          <i class="fas fa-search" aria-hidden="true"></i>
+          <label for="city-input" class="sr-only">Search city</label>
+          <input
+            type="text"
+            id="city-input"
+            placeholder="Search for city..."
+            autocomplete="off"
+          />
+
+          <button class="icon-btn" id="search-btn" aria-label="Search">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <button id="location-btn" class="btn btn-secondary">
+          <i class="fas fa-location-arrow"></i> Use My Location
+        </button>
+
+        <button
+          id="unit-toggle"
+          class="icon-btn unit-toggle"
+          aria-label="Toggle temperature unit"
+        >
+          <span id="unit-display">°C</span>
+        </button>
+      </section>
+
+      <!-- Suggestions -->
+      <div class="suggestions" id="suggestions" hidden></div>
+
+      <!-- Loading State -->
+      <div class="loading" id="loading" hidden>
+        <div class="spinner"></div>
+        <p>Fetching weather data...</p>
+      </div>
+
+      <!-- Error Message -->
+      <div class="error-message" id="error-message" hidden>
+        <i class="fas fa-exclamation-circle"></i>
+        <p id="error-text">City not found. Please try again.</p>
+      </div>
+
+      <!-- Weather Display -->
+      <section class="weather-display" id="weather-display" hidden>
+        <div class="current-weather">
+          <div class="location-info">
+            <h2 id="city-name">Dehradun</h2>
+            <p id="date-time">Monday, 12:00 PM</p>
+          </div>
+
+          <div class="weather-main">
+            <div class="weather-icon">
+              <img src="" alt="Current weather icon" id="weather-icon" />
+            </div>
+
+            <div class="temperature">
+              <h3 id="temp-display">20°</h3>
+              <p id="feels-like">Feels like 18°</p>
+            </div>
+          </div>
+
+          <p class="weather-description" id="weather-desc">Partly Cloudy</p>
+
+          <div class="weather-details">
+            <div class="detail-item">
+              <i class="fas fa-tint"></i>
+              <div>
+                <span class="detail-label">Humidity</span>
+                <span class="detail-value" id="humidity">65%</span>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <i class="fas fa-wind"></i>
+              <div>
+                <span class="detail-label">Wind</span>
+                <span class="detail-value" id="wind-speed"></span>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <i class="fas fa-compress-arrows-alt"></i>
+              <div>
+                <span class="detail-label">Pressure</span>
+                <span class="detail-value" id="pressure">1013 hPa</span>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <i class="fas fa-eye"></i>
+              <div>
+                <span class="detail-label">Visibility</span>
+                <span class="detail-value" id="visibility">10 km</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sun Times -->
+          <div class="sun-times">
+            <div class="sun-item">
+              <i class="fas fa-sun"></i>
+              <div>
+                <span class="sun-label">Sunrise</span>
+                <span class="sun-time" id="sunrise">6:30 AM</span>
+              </div>
+            </div>
+
+            <div class="sun-item">
+              <i class="fas fa-moon"></i>
+              <div>
+                <span class="sun-label">Sunset</span>
+                <span class="sun-time" id="sunset">6:45 PM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Forecast -->
+          <section class="forecast-section">
+            <h3>5-Day Forecast</h3>
+            <div class="forecast-container" id="forecast-container"></div>
+          </section>
+
+          <section class="hourly-section">
+            <h3>Hourly Forecast</h3>
+            <div class="hourly-container" id="hourly-container"></div>
+          </section>
+        </div>
+      </section>
+
+      <!-- Recent Searches -->
+      <section class="recent-searches" id="recent-searches-section" hidden>
+        <h3>Recent Searches</h3>
+        <div class="recent-list" id="recent-list"></div>
+        <button id="clear-history" class="btn btn-text">
+          <i class="fas fa-trash"></i> Clear History
+        </button>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <p>
+          Made with ☕ and JavaScript |
+          <a
+            href="https://100amankumarprojects.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            >100 Aman Projects</a
+          >
+        </p>
+
+        <p class="api-credit">
+          Weather data provided by
+          <a
+            href="https://openweathermap.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >OpenWeather API</a
+          >
+        </p>
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <i class="fas fa-info-circle"></i>
+      <span id="toast-message"></span>
+    </div>
+
+    <script src="./config.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
